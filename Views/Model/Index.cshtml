@@ -1,0 +1,137 @@
+﻿@model IEnumerable<ModelViewModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="container mt-5">
+    <!-- رسالة النجاح -->
+    @if (TempData["Message"] is not null)
+    {
+        <div id="successMessage" class="alert alert-success mt-4">
+            <h3>@TempData["Message"]</h3>
+        </div>
+
+        <script>
+            setTimeout(function () {
+                var successMessage = document.getElementById("successMessage");
+                if (successMessage) {
+                    successMessage.style.display = 'none';
+                }
+            }, 3000);
+        </script>
+    }
+
+    <!-- العنوان -->
+    <div class="d-flex justify-content-center align-items-center flex-column mt-4">
+        <h2>Models</h2>
+    </div>
+
+    <!-- عرض الموديلات إذا كانوا موجودين -->
+    @if (Model.Count() > 0)
+    {
+        <div class="table-responsive mt-4">
+            <table class="table table-striped table-hover text-center shadow-sm rounded">
+                <thead class="table-dark">
+                    <tr>
+                        <th>@Html.DisplayNameFor(D => D.Name)</th>
+                        <th>@Html.DisplayNameFor(D => D.Brand)</th>
+                        <th>Details</th>
+                        <th>Update</th>
+                        <th>Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var Ser in Model)
+                    {
+                        <tr>
+                            <td>@Ser.Name</td>
+                            <td>@Ser.Brand.Name</td>
+
+                            <td>
+                                <a asp-controller="Model" asp-action="Details" asp-route-Id="@Ser.Id" class="btn btn-dark">
+                                    <i class="fas fa-eye"></i> Details
+                                </a>
+                            </td>
+                            <td>
+                                <a asp-controller="Model" asp-action="Edit" asp-route-Id="@Ser.Id" class="btn btn-dark">
+                                    <i class="fas fa-edit"></i> Update
+                                </a>
+                            </td>
+                            <td>
+                                <a asp-controller="Model" asp-action="Delete" asp-route-Id="@Ser.Id" class="btn btn-dark">
+                                    <i class="fas fa-trash"></i> Delete
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    }
+    else
+    {
+        <div class="mt-4 text-center">
+            <h3 class="text-muted">There are No Models!</h3>
+        </div>
+    }
+
+    <!-- زر إضافة موديل جديد -->
+    <div class="d-flex justify-content-center align-items-center flex-column mt-4">
+        <a asp-controller="Model" asp-action="Create" class="btn btn-dark mb-3">
+            <i class="fas fa-plus"></i> Add New Model
+        </a>
+    </div>
+</div>
+
+<!-- تحسين التصميم باستخدام CSS مدمج -->
+<style>
+    body {
+        background-color: #f8f9fa;
+    }
+
+    h2 {
+        font-size: 2rem;
+        font-weight: bold;
+        color: #333;
+        text-transform: uppercase;
+    }
+
+    .table {
+        border-radius: 8px;
+        overflow: hidden;
+    }
+
+    th {
+        font-size: 1.1rem;
+    }
+
+    td {
+        font-size: 1rem;
+        color: #555;
+    }
+
+    .btn {
+        transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    }
+
+        .btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+    .shadow-sm {
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .table-responsive {
+        max-width: 100%;
+        margin-top: 20px;
+    }
+
+    .container {
+        padding: 20px;
+        background-color: white;
+        border-radius: 10px;
+    }
+</style>

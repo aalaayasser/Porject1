@@ -1,0 +1,45 @@
+﻿@model PartViewModel
+@{
+    ViewData["Title"] = "Delete";
+}
+<br />
+
+<h1>Are you sure To Delete this Part </h1>
+<br />
+<br />
+<form asp-controller="Parts" asp-action="Delete" method="post">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+    
+   @*  <div class="mb-3">
+        <label asp-for="Model" class="form-label"></label>
+        <input class="form-control" asp-for="Model.Name" readonly />
+    </div> *@
+
+    <div class="mb-3">
+        <label asp-for="PartName" class="form-label"></label>
+        <input class="form-control" asp-for="PartName" readonly />
+    </div>
+
+
+    <div class="mb-3">
+        <label asp-for="Price" class="form-label"></label>
+        <input class="form-control" asp-for="Price" readonly />
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Description" class="form-label"></label>
+        <input class="form-control" asp-for="Description" />
+       
+    </div>
+    
+
+    <div class="mb-3">
+        <label asp-for="PartKilometresToChange" class="form-label"></label>
+        <input class="form-control" asp-for="PartKilometresToChange" readonly />
+    </div>
+    
+
+    <input type="submit" class="btn btn-danger" value="Delete" />
+    <a asp-controller="parts" asp-action="Index" class="btn btn-dark">Cancel</a>
+</form>

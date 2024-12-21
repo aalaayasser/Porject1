@@ -1,0 +1,26 @@
+﻿@{
+    ViewData["Title"] = "Logout";
+    Layout = "~/Views/Shared/_AuthLayout.cshtml";
+}
+
+<div class="d-flex justify-content-center align-items-center vh-100">
+    <div class="col-md-6 col-lg-4">
+        <div class="card shadow-lg p-4">
+            <h3 class="text-center font-weight-bold mb-4">Logout</h3>
+
+            <form asp-action="Logout" method="post">
+                <div class="text-center mb-4">
+                    <p>Are you sure you want to log out?</p>
+                </div>
+
+                <div class="form-group text-center">
+                    <button type="submit" class="btn btn-dark btn-block rounded-pill" style="width: 150px;">Logout</button>
+                </div>
+
+                <div class="form-group text-center">
+                    <p>Changed your mind? <a asp-action="Index" class="text-dark font-weight-bold">Go back to Home</a></p>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

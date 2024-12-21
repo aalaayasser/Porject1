@@ -1,0 +1,66 @@
+﻿@model RegisterViewModel
+@{
+    ViewData["Title"] = "Register";
+    Layout = "~/Views/Shared/_AuthLayout.cshtml";
+}
+
+<div class="d-flex justify-content-center align-items-center vh-100">
+    <div class="col-md-6 col-lg-4">
+        <div class="card shadow-lg p-4">
+            <h3 class="text-center font-weight-bold mb-4">Create an Account</h3>
+
+            <form asp-action="Register" method="post">
+                <div asp-validation-summary="All" class="text-danger mb-3"></div>
+
+                <div class="form-group">
+                    <label asp-for="Name" class="font-weight-bold"></label>
+                    <input asp-for="Name" class="form-control rounded-pill" placeholder="Enter your name" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Email" class="font-weight-bold"></label>
+                    <input asp-for="Email" class="form-control rounded-pill" placeholder="Enter your email" />
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Password" class="font-weight-bold"></label>
+                    <input asp-for="Password" type="password" class="form-control rounded-pill" placeholder="Create a password" />
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="ConfirmPassword" class="font-weight-bold"></label>
+                    <input asp-for="ConfirmPassword" type="password" class="form-control rounded-pill" placeholder="Confirm your password" />
+                    <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="ContactNumber" class="font-weight-bold"></label>
+                    <input asp-for="ContactNumber" class="form-control rounded-pill" placeholder="Enter your contact number" />
+                    <span asp-validation-for="ContactNumber" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="City" class="font-weight-bold"></label>
+                    <input asp-for="City" class="form-control rounded-pill" placeholder="Enter your city" />
+                    <span asp-validation-for="City" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Street" class="font-weight-bold"></label>
+                    <input asp-for="Street" class="form-control rounded-pill" placeholder="Enter your street" />
+                    <span asp-validation-for="Street" class="text-danger"></span>
+                </div>
+                <br />
+                <button type="submit" class="btn btn-dark btn-block rounded-pill ml-auto" style="width: 150px; margin-left:110px ">Register</button>
+
+
+                <div class="form-group text-center mt-3">
+                    <p>Already have an account? <a asp-action="Login" class="text-dark font-weight-bold">Login Now!</a></p>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

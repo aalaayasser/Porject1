@@ -1,0 +1,32 @@
+﻿@model ProdServCategory
+@{
+    ViewBag.PageTitle = "Category Mangament";
+    ViewBag.CardTitle = " Delete Category ";
+    
+}
+
+
+<partial name="_Toaster" />
+<form mothod="post" asp-action="Delete" asp-controller="NewCategory">
+    <input hidden asp-for="Id" />
+    <div class="mb-3">
+        <label asp-for="Name"></label>
+        <input asp-for="Name" class="form-control" readonly />
+
+
+        <label asp-for="Description"></label>
+        <input asp-for="Description" class="form-control" readonly />
+
+    </div>
+    <div class="mb-3">
+        <button type="submit" class="btn btn-primary">Delete</button>
+        <a asp-action="Index" asp-controller="NewCategory" class="btn btn-warning">Back to Index  </a>
+    </div>
+</form>
+
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+
+}
+

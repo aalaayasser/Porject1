@@ -1,0 +1,21 @@
+﻿@model ServiceViewModel
+@{
+    ViewData["Title"] = "Delete";
+}
+<br />
+
+<h1>Are you sure To Delete this Service </h1>
+<br />
+<br />
+<form asp-controller="Services" asp-action="Delete" method="post">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+    <partial name="Partialviews/DeleteDetailsServicesPartial" />
+
+    <input type="submit" class="btn btn-danger" value="Delete" />
+    <a asp-controller="Services" asp-action="Index" class="btn btn-dark">Cancel</a>
+</form> 
+
+
+
+

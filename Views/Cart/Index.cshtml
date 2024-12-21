@@ -1,0 +1,178 @@
+﻿@model List<CartViewModel>
+
+@{
+    ViewData["Title"] = "Your Cart";
+}
+
+<!-- Main Container to center content -->
+<div class="cart-container d-flex justify-content-center align-items-start">
+    <div class="cart-box shadow-lg p-5">
+        <!-- Header and Cart Summary Row -->
+        <div class="cart-header-summary d-flex justify-content-between align-items-center mb-4">
+            <!-- Cart Header (Your Cart) -->
+            <div class="cart-header-content">
+                <h2 class="cart-header-text">Your Cart</h2>
+            </div>
+            <!-- Cart Summary (Total) -->
+            <div class="cart-summary-content">
+                @if (Model.Any())
+                {
+                    <div class="cart-summary">
+                        <h3>Total: @Model.Sum(x => x.TotalPrice).ToString("C")</h3>
+                    </div>
+                }
+                else
+                {
+                    <p class="text-center text-muted">Your cart is empty. Start shopping!</p>
+                }
+            </div>
+        </div>
+
+        <!-- Cart Table -->
+        @if (Model.Any())
+        {
+            <div class="cart-table mb-4">
+                <table class="table table-bordered table-striped">
+                    <thead class="thead-light">
+                        <tr>
+                            <th>Part Name</th>
+                            <th>Quantity</th>
+                            <th>Price</th>
+                            <th>Total</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.PartName</td>
+                                <td>
+                                    <input type="number" class="form-control quantity-input" value="@item.Quantity" min="1" />
+                                </td>
+                                <td>@item.Price.ToString("C")</td>
+                                <td>@item.TotalPrice.ToString("C")</td>
+                                <td>
+                                    <button class="btn btn-sm btn-danger remove-btn">Remove</button>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Cart Summary (Total & Checkout Button) -->
+            <div class="cart-summary mb-4">
+                <h3>Total: @Model.Sum(x => x.TotalPrice).ToString("C")</h3>
+                <div class="mt-3">
+                    <a href="@Url.Action("Checkout", "Cart")" class="btn btn-dark btn-lg">Proceed to Checkout</a>
+                </div>
+            </div>
+        }
+        else
+        {
+            <p class="text-center text-muted">Your cart is empty. Start shopping!</p>
+        }
+
+        <!-- Buttons for adding part and going back home -->
+        <div class="buttons d-flex justify-content-between mt-4">
+            <a href="@Url.Action("Parts", "Parts", new { partId = 1 })" class="btn btn-dark btn-lg">Add a part to cart</a>
+            <a href="@Url.Action("Index", "Home")" class="btn btn-secondary btn-lg">Back to Home</a>
+        </div>
+    </div>
+</div>
+
+<!-- Inline CSS for Styling -->
+<style>
+    /* Main Container to center content with small gap from top */
+    .cart-container {
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: flex-start; /* Align items to the top */
+        margin-top: 20px; /* Add top margin to shift the content down a bit */
+    }
+
+    /* Cart Box Styles */
+    .cart-box {
+        background-color: #fff;
+        border-radius: 10px;
+        width: 80%;
+        max-width: 1000px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Header and Cart Summary Row */
+    .cart-header-summary {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    /* Cart Header Style */
+    .cart-header-text {
+        font-size: 2.5rem;
+        color: #333;
+        background-color: #343a40;
+        color: white;
+        padding: 10px 20px;
+        border-radius: 5px;
+    }
+
+    /* Custom Button-Style for "Total" and "Your Cart" */
+    .cart-header-content,
+    .cart-summary-content {
+        display: flex;
+        align-items: center;
+    }
+
+    .cart-summary {
+        font-size: 2rem;
+        color: #28a745;
+        background-color: #343a40;
+        padding: 15px;
+        color: white;
+        border-radius: 5px;
+    }
+
+    /* Cart Table */
+    .cart-table th, .cart-table td {
+        text-align: center;
+        vertical-align: middle;
+    }
+
+    .quantity-input {
+        width: 80px;
+    }
+
+    .remove-btn {
+        background-color: #dc3545;
+        color: white;
+        border: none;
+    }
+
+        .remove-btn:hover {
+            background-color: #c82333;
+        }
+
+    /* Dark Button Styles */
+    .btn-dark {
+        background-color: #343a40;
+        color: white;
+        border: none;
+    }
+
+        .btn-dark:hover {
+            background-color: #23272b;
+        }
+
+    /* Button Container */
+    .buttons {
+        display: flex;
+        justify-content: space-between;
+    }
+
+        .buttons .btn {
+            width: 48%; /* Making both buttons have equal width */
+        }
+</style>

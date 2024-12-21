@@ -1,0 +1,61 @@
+﻿@model PartService
+@{
+    ViewBag.PageTitle = "Product Mangament";
+    ViewBag.CardTitle = " Delete Product ";
+    
+}
+
+
+
+<form mothod="post" asp-action="Delete" asp-controller="PartService">
+    <input hidden asp-for="Id" />
+    <input hidden asp-for="Img" />
+    <div class="mb-3">
+        <label asp-for="Name"></label>
+        <input asp-for="Name" class="form-control" readonly />
+
+
+        <label asp-for="Description"></label>
+        <input asp-for="Description" class="form-control" readonly />
+
+        <label asp-for="Price"></label>
+        <input asp-for="Price" class="form-control" readonly />
+
+        <label asp-for="Price"></label>
+        <input asp-for="Price" class="form-control" readonly />
+
+        <label asp-for="ProdServCategoryId"></label>
+        <input asp-for="ProdServCategoryId" class="form-control" readonly />
+
+        <label for="imgfile" class="form-label fw-bold">Upload Image</label>
+        <input type="file" name="file" id="imgfile" class="form-control" readonly />
+
+
+        <script>
+            document.getElementById('imgfile').addEventListener('click', function (e) {
+                e.preventDefault(); // منع الفتح
+            });
+        </script>
+        <div class="col-md-6">
+            <div class="mb-3 text-center">
+                <label class="form-label fw-bold">Current Image</label>
+                <div class="border p-2">
+                    <img src="~/@Model.Img" alt="Product Image" class="img-fluid rounded" style="max-height: 250px;" />
+                </div>
+            </div>
+        </div>
+    </div>
+
+    </div>
+    <div class="mb-3">
+        <button type="submit" class="btn btn-primary">Delete</button>
+        <a asp-action="Index" asp-controller="PartService" class="btn btn-warning">Back to Index  </a>
+    </div>
+</form>
+
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+
+}
+

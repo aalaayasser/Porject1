@@ -1,0 +1,64 @@
+﻿@model CarViewModel
+@{
+    ViewData["Title"] = "Edit";
+}
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<h1>Edit Car</h1>
+<form asp-controller="Car" asp-action="Edit" method="post">
+
+    <partial name="Partialviews/CreateEditCarPartial" />
+
+    <input type="submit" class="btn btn-dark" value="Edit" />
+    <a asp-controller="Car" asp-action="Index" class="btn btn-dark">Back To List</a>
+
+</form>
+@section Script
+{
+    <script>
+        function BrandChange() {
+            //debugger;
+            var BrandId = $("#DrpBrand").val();
+            $.ajax({
+                url: '@Url.Action("GetModelByBrands", "Car")',
+                type: "GET",
+                data: { BrandId: BrandId },
+                success: function (data) {
+                    let DrpModel = $("#DrpModel");
+                    DrpModel.empty().append("<option value=''> Select Model </option>");
+                    for (let i = 0; i < data.length; i++) {
+                        DrpModel.append(`<option value="${data[i].id}">${data[i].name}</option>`);
+                    }
+                    $("#DrpModel").val("@Model?.Model?.Id").change();
+                }
+            });
+        };
+
+        /*$("#DrpBrand").change(function () {
+            var BrandId = $(this).val();
+            $.ajax({
+                url: '@Url.Action("GetModelByBrands", "Car")',
+                type: "GET",
+                data: { BrandId: BrandId },
+                success: function (data) {
+                    let DrpModel = $("#DrpModel");
+                    DrpModel.empty().append("<option value=''> Select Model </option>");
+                    for (let i = 0; i < data.length; i++) {
+                        DrpModel.append(`<option value="${data[i].id}">${data[i].name}</option>`);
+                    }
+                }
+            });
+        });*/
+
+        /*$(function () {
+            $("#DrpBrand").val("@Model?.Model?.Brand?.Id").change();
+            // $("#DrpModel").val("@Model?.Model?.Id").change();
+        });*/
+
+
+    </script>
+}

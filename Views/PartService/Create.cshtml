@@ -1,0 +1,59 @@
+﻿@model PartServiceVM
+@{
+    ViewBag.PageTitle = "Product Mangament";
+    ViewBag.CardTitle = " Create Product ";
+    
+}
+
+
+<form mothod="post" asp-action="Create" asp-controller="PartService" enctype="multipart/form-data">
+    <div class="mb-3">
+        <label asp-for="partService.Name"></label>
+        <input asp-for="partService.Name" class="form-control" />
+        <span asp-validation-for="@Model.partService.Name" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="partService.Description"></label>
+        <input asp-for="partService.Description" class="form-control" />
+        <span asp-validation-for="partService.Description" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="partService.Price"></label>
+        <input asp-for="partService.Price" class="form-control" />
+        <span asp-validation-for="partService.Price" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="partService.Img" class="control-label m-2"></label>
+        <input type="file" name="file" id="imgFile" class="form-control" onchange="fillImg(event);" />
+    </div>
+    <div class="mb-3">
+        <label asp-for="partService.ProdServCategoryId"></label>
+        <Select asp-for="partService.ProdServCategoryId" class="form-control" asp-items="@Model.CategoryList">
+            <option disabled selected>--Select Category--</option>
+        </Select>
+        <span asp-validation-for="partService.ProdServCategoryId" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <button type="submit" class="btn btn-primary">Create</button>
+        <a asp-action="Index" asp-controller="PartService" class="btn btn-warning">Back to Index  </a>
+    </div>
+</form>
+
+
+@section scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+
+    <script>
+        var fillImg = function (event) {
+            var imgHolder = document.getElementById("ImagePrevew");
+            imgHolder.src = URL.createObjectURL(event.target.files[0]);
+        }
+    </script>
+
+}
+
+
+

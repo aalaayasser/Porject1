@@ -1,0 +1,24 @@
+﻿@model BrandViewModel
+@{
+    ViewData["Title"] = "AddBrand";
+}
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<h1>Add Brand</h1>
+
+<form asp-controller="Brand" asp-action="AddBrand" method="post">
+
+    <div class="form-group">
+        <label asp-for="BrandName"> </label>
+        <input class="form-control" asp-for="BrandName">
+        <span asp-asp-validation-for="BrandName" class="text-danger"> </span>
+    </div>
+
+    <input type="submit" class="btn btn-dark" value="Add" />
+    <a asp-controller="Brand" asp-action="Index" class="btn btn-dark">Back To List</a>
+
+</form>

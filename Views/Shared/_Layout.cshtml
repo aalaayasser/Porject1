@@ -1,0 +1,263 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>@ViewData["Title"] - PLProj</title>
+	<link href="~/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+	<link rel="stylesheet" href="~/font-awesome/css/all.min.css" />
+	<link rel="stylesheet" href="~/css/style.css?v=1.1">
+	<link rel="icon" href="imgs/Logo.png" type="image/x-icon">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+	<!-- fonts style -->
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Poppins:400,600,700&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+	@* <header>
+	<a href="#" class="logo">D2D Auto</a>
+	<nav class="navigation">
+	<a asp-action="Index" asp-controller="Home"> Home </a>
+	@* <a asp-action="Book" asp-controller="Home"> Appointment </a>
+	@if (User.Identity.IsAuthenticated)
+	{
+	@* <a asp-action="Book" asp-controller="Home"> Appointment </a>
+	@*  @if (User.IsInRole("Admin"))
+	{
+	<a asp-action="GetServices" asp-controller="Services"> Services</a>
+	}  *@
+	@* <a asp-action="GetServices" asp-controller="Services"> Services</a>
+	<a asp-action="CreateCar" asp-controller="Car"> Add Car </a>
+	<a id="Logout" asp-area="Identity" asp-page="/Account/Logout">Logout</a>
+
+	<a asp-action="CreateTicketbyCustomer" asp-controller="Ticket">Add Service</a>
+	@* <a href="#contact"> Contact </a>
+	}
+	else
+	{
+	<a asp-action="GetServices" asp-controller="Services"> Services</a>
+	<a asp-controller="Tech" asp-action="Index">Techincians</a>
+	<a asp-controller="Driver" asp-action="Index">Drivers</a>
+	<a asp-controller="Customer" asp-action="Index">Customers</a>
+
+
+	<a id="register" asp-area="Identity" asp-page="/Account/Register">Register</a>
+	<a id="login" asp-area="Identity" asp-page="/Account/Login">Login</a>
+	}
+	</nav>
+	</header> *@
+	<!-- header section starts -->
+
+	<div class="hero_bg_box">
+		<div class="img-box">
+			<img src="imgs/BGPhoto.jpg" alt="">
+		</div>
+	</div>
+
+	<header class="header_section">
+		<div class="header_top">
+			<div class="container-fluid">
+				<div class="contact_link-container">
+					<a href="" class="contact_link1">
+						<i class="fa fa-map-marker" aria-hidden="true"></i>
+						<span>
+							Egypt, Mans
+						</span>
+					</a>
+					<a href="" class="contact_link2">
+						<i class="fa fa-phone" aria-hidden="true"></i>
+						<span>
+							Call : +01 1234567890
+						</span>
+					</a>
+					<a href="" class="contact_link3">
+						<i class="fa fa-envelope" aria-hidden="true"></i>
+						<span>
+							D2D@gmail.com
+						</span>
+					</a>
+				</div>
+			</div>
+		</div>
+
+
+		<div class="header_bottom">
+			<div class="container-fluid">
+				<nav class="navbar navbar-expand-lg custom_nav-container">
+					<a class="navbar-brand" href="index.html">
+						<span>
+							DoorToDoor
+						</span>
+					</a>
+					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+						<span class=""></span>
+					</button>
+
+					<div class="collapse navbar-collapse ml-auto" id="navbarSupportedContent">
+						<ul class="navbar-nav  ">
+							<li class="nav-item active">
+								<a class="nav-link" asp-action="Index" asp-controller="Home">Home <span class="sr-only">(current)</span></a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="#about_section"> About</a>
+							</li>
+
+							<li class="nav-item">
+								<a class="nav-link" href="#contact">Contact us</a>
+							</li>
+							@if (User.Identity.IsAuthenticated)
+							{
+								
+								@if (User.IsInRole("Admin"))
+								{
+									<li class="nav-item">
+										<a class="nav-link" asp-action="Index" asp-controller="Services"> Services </a>
+									</li>
+									
+									<li class="nav-item">
+										<a class="nav-link" asp-action="AllTicket" asp-controller="Ticket"> Tickets</a>
+									</li>
+									<li class="nav-item">
+										<a class="nav-link" asp-action="Index" asp-controller="Brand"> Brands</a>
+									</li>
+									<li class="nav-item">
+										<a class="nav-link" asp-action="Index" asp-controller="Model"> Models</a>
+									</li>
+									<li class="nav-item">
+										<a class="nav-link" asp-action="Index" asp-controller="Tech"> Technichians</a>
+									</li>
+									<li class="nav-item">
+										<a class="nav-link" asp-action="Index" asp-controller="Driver"> Drivers</a>
+									</li>
+									<li class="nav-item">
+										<a class="nav-link" asp-action="Index" asp-controller="Customer"> Customers</a>
+									</li>
+									<li class="nav-item">
+										<a class="nav-link" asp-action="Index" asp-controller="Parts"> Parts</a>
+									</li>
+									<li class="nav-item">
+										<a class="nav-link" asp-action="Index" asp-controller="Color"> Colors</a>
+									</li>
+									
+									
+
+									
+
+
+								}
+								@if (User.IsInRole("Technician"))
+								{
+									
+									
+									<li class="nav-item">
+										<a class="nav-link" asp-action="AssignedTechnicainTicket" asp-controller="Ticket">  Tickets </a>
+									</li>
+
+									
+
+									
+
+								}
+
+
+								@if (User.IsInRole("Customer"))
+								{   <li class="nav-item">
+										<a class="nav-link" asp-action="Index" asp-controller="Car">  Cars </a>
+									</li>
+									@* <li class="nav-item">
+									<a asp-action="CreateTicketbyCustomer" asp-controller="Ticket">Add Service</a>
+									</li> *@
+									<li class="nav-item">
+										<a class="nav-link" asp-action="MyTicket" asp-controller="Ticket">My Tickets</a>
+									</li>
+									<li class="nav-item">
+										<a class="nav-link" asp-action="AddTicket" asp-controller="Ticket">Add Ticket</a>
+									</li>
+									<li class="nav-item">
+										<a class="nav-link" asp-action="Parts" asp-controller="Parts">Parts</a>
+									</li>
+									<li class="nav-item">
+										<a class="nav-link" asp-action="Index" asp-controller="CustomerPS">PS</a>
+									</li>
+
+									<li class="nav-item">
+										<a class="nav-link" asp-action="Index" asp-controller="Cart">
+											<!-- الزر الدائري مع الأيقونة -->
+											<button class="btn btn-dark rounded-circle"
+													style="border: none; width: 40px; height: 40px; display: flex; justify-content: center; align-items: center;">
+												<i class="fas fa-shopping-cart" style="font-size: 20px;"></i>
+											</button>
+											<!-- عرض العدد داخل السلة (تحديث العدد حسب القيمة الحقيقية) -->
+											
+										</a>
+									</li>
+
+									<form class="d-flex align-items-center">
+										<a href="/NewCart/Index" class="nav-link text-decoration-none">
+											<!-- الزر الدائري مع الأيقونة -->
+											<button class="btn btn-light rounded-circle shadow-sm position-relative"
+													style="border: 1px solid #ccc; width: 50px; height: 50px; display: flex; justify-content: center; align-items: center;">
+												<i class="fas fa-shopping-cart text-dark" style="font-size: 24px;"></i>
+												<!-- عداد السلة داخل الزر -->
+												<span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+													  style="font-size: 12px; padding: 5px 7px;">0</span>
+											</button>
+										</a>
+									</form>
+
+
+									
+
+								}
+
+								 @if (User.IsInRole("Driver"))
+								 {  <li class="nav-item">
+										<a class="nav-link" asp-action="AssignedDriverTicket" asp-controller="Ticket"> Tickets</a>
+									</li>
+
+								 }
+
+
+							  <li class="nav-item">
+								<a id="Logout" class="nav-link" asp-controller="Account" asp-action="Logout">Logout</a>
+							  </li> 
+								
+								
+							}
+							else
+							{
+								@* <a asp-action="GetServices" asp-controller="Services"> Services</a>
+								<a asp-controller="Tech" asp-action="Index">Techincians</a>
+								<a asp-controller="Driver" asp-action="Index">Drivers</a>
+								<a asp-controller="Customer" asp-action="Index">Customers</a> *@
+								<li class="nav-item">
+									<a id="Logout" class="nav-link" asp-controller="Account" asp-action="Register">Register</a>
+								</li>
+								<li class="nav-item">
+									<a id="Logout" class="nav-link" asp-controller="Account" asp-action="Login">Login</a>
+								</li>
+
+								
+							}
+							
+							
+						</ul>
+					</div>
+				</nav>
+			</div>
+		</div>
+	</header>
+
+	<!-- end header section -->
+	<div>
+		@RenderBody()
+	</div>
+	<script src="~/lib/jquery/jquery.min.js"></script>
+	<script src="~/lib/jquery/jqueryui/jquery-ui.min.js"></script>
+	<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+	<script src="~/js/site.js" asp-append-version="true"></script>
+	@await RenderSectionAsync("Scripts", required: false)
+	@RenderSection("Script", required: false)
+
+</body>
+</html>

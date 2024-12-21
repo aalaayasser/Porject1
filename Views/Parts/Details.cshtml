@@ -1,0 +1,36 @@
+﻿@model PartViewModel
+@{
+    ViewData["Title"] = "Details";
+   
+}
+
+<h1> Part Details</h1>
+
+<br />
+<br />
+<div>
+   
+    <div class="mb-3">
+        <label asp-for="PartName" class="form-label"></label>
+        <input class="form-control" asp-for="PartName" readonly />
+    </div>
+   
+
+    <div class="mb-3">
+        <label asp-for="Price" class="form-label"></label>
+        <input class="form-control" asp-for="Price" readonly />
+    </div>
+
+    <div class="mb-3">
+    <label asp-for="Description" class="form-label"></label>
+    <input class="form-control" asp-for="Description" readonly />
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="PartKilometresToChange" class="form-label"></label>
+        <input class="form-control" asp-for="PartKilometresToChange" readonly />
+    </div>
+
+    <a asp-controller="Parts" asp-action="Edit" asp-route-Id="@Model.Id" class="btn btn-success">  Edit </a>
+    <a asp-controller="Parts" asp-action="Index" class="btn btn-dark">  Back to list </a>
+</div>

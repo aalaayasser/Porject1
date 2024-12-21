@@ -1,0 +1,24 @@
+﻿@model ColorViewModel
+@{
+    ViewData["Title"] = "AddColor";
+}
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<h1>Add Color</h1>
+
+<form asp-controller="Color" asp-action="AddColor" method="post">
+
+    <div class="form-group">
+        <label asp-for="Name"> </label>
+        <input class="form-control" asp-for="Name">
+        <span asp-asp-validation-for="Name" class="text-danger"> </span>
+    </div>
+
+    <input type="submit" class="btn btn-dark" value="Add" />
+    <a asp-controller="Color" asp-action="Index" class="btn btn-dark">Back To List</a>
+
+</form>

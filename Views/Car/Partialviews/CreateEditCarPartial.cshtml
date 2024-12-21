@@ -1,0 +1,64 @@
+﻿@using BLLProject.Specifications
+@model CarViewModel
+@inject IUnitOfWork unitOfWork
+@{
+    var Colors = new SelectList(unitOfWork.Repository<Color>().GetAll(), "Id", "Name");
+    var Brands = new SelectList(unitOfWork.Repository<Brand>().GetAll(), "Id", "Name");
+    
+}
+
+@{
+    ViewData["Title"] = "CreateEditCarPartial";
+}
+
+<div class="form-group">
+    <label class="form-label">Brand</label>
+    <select class="form-control" id="DrpBrand" asp-for="Model.BrandId" asp-items="Brands" onchange="BrandChange();" >
+        <option value="">--Select Brand--</option>
+    </select>
+</div>
+<div class="form-group">
+    <label asp-for="Model" class="form-label"> </label>
+
+    @if (Model is not null && Model.Model is not null && Model.Model.Brand is not null )
+    {
+        var spec = new BaseSpecification<Model>(e => e.BrandId == Model.Model.BrandId);
+        var Models = new SelectList(unitOfWork.Repository<Model>().GetAllWithSpec(spec), "Id", "Name");
+
+        <select class="form-control" asp-for="ModelId" asp-items="Models" id="DrpModel">
+            <option value="@null"> --Select Model-- </option>
+        </select>
+    }else{
+        <select class="form-control" asp-for="ModelId" id="DrpModel">
+            <option value="@null"> --Select Model-- </option>
+        </select>
+    }
+
+</div>
+<div class="form-group">
+    <label asp-for="PlateNumber"> </label>
+    <input class="form-control" asp-for="PlateNumber">
+    <span asp-asp-validation-for="PlateNumber" class="text-danger"> </span>
+</div>
+
+<div class="form-group">
+    <label asp-for="ColorId" class="form-label"> </label>
+    <select class="form-control" asp-for="ColorId" asp-items="Colors">
+        <option value="@null"> --Select Color-- </option>
+    </select>
+    <span asp-validation-for="ColorId" class="text-danger"> </span>
+</div>
+
+<div class="form-group">
+    <label asp-for="Description"> </label>
+    <input class="form-control" asp-for="Description">
+    <span asp-asp-validation-for="Description" class="text-danger"> </span>
+</div>
+
+<div class="form-group">
+    <label asp-for="Year"> </label>
+    <input class="form-control" asp-for="Year">
+    <span asp-asp-validation-for="Year" class="text-danger"> </span>
+</div>
+
+

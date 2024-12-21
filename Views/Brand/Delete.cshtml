@@ -1,0 +1,20 @@
+﻿@model BrandViewModel
+@{
+    ViewData["Title"] = "Delete";
+}
+<br />
+
+<h1>Are you sure To Delete this Brand </h1>
+<br />
+<br />
+<form asp-controller="Brand" asp-action="Delete" method="post">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+    <div class="form-group">
+        <label asp-for="BrandName"> </label>
+        <input class="form-control" asp-for="BrandName" readonly>
+    </div>
+
+    <input type="submit" class="btn btn-danger" value="Delete" />
+    <a asp-controller="Brand" asp-action="Index" class="btn btn-dark">Cancel</a>
+</form>

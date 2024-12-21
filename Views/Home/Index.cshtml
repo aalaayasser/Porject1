@@ -1,0 +1,631 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+<br />
+<br/>
+<br/>
+
+@if (TempData["Message"] is not null)
+{
+    <div id="successMessage" class="alert alert-success mt-4">
+        <h3>@TempData["Message"]</h3>
+    </div>
+
+    <script>
+
+        setTimeout(function () {
+
+            var successMessage = document.getElementById("successMessage");
+            if (successMessage) {
+                successMessage.style.display = 'none';
+            }
+        }, 3000);
+    </script>
+}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>CARS</title>
+  </head>
+@* <body style="background: linear-gradient(90deg, rgba(4,5,5,1) 20%, rgba(62,74,74,1) 50%, rgba(0,0,0,1) 80%);">
+
+    <section class="main">
+        <div class="text-container">
+            <h3><br> DoorToDoor Service @* D2D Auto *@</h3>
+            
+          @*   <p>
+                 Welcome to Our Website! We specialize in providing top-notch car maintenance and repair services to ensure your vehicles perform at their best. Our team of experienced professionals is ready to offer a wide range of services, including comprehensive inspections, oil changes, brake maintenance, and air conditioning system repairs. 
+            </p>
+            <p> *@
+                @* We are committed to delivering high-quality service and exceptional customer care. Please explore our site to discover more about our services and how we can assist you! *@
+           @*  </p>   
+            <br />
+            <a href="#Cars" class="main-btn">Our Services</a>
+            <div class="social-icons">
+                <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                <a href="#"><i class="fa-brands fa-youtube"></i></a>
+                <a href="#cars"><i class="fa-solid fa-car"></i></a>
+            </div>
+        </div>
+    </section>
+
+   
+    <section class="cards" id="Cars">
+        <div class="content">
+            <!-- FIRST BMW -->
+            <h2 class="title">Services </h2>
+            <div class="card">
+                <div class="icon">
+                    <img src="/imgs/service-4.jpg" width="300" height="150" style="border-radius: 15px;">
+                </div>
+                <div class="info">
+                    <a href="bmw.html" style="text-decoration: none;"><h3>BMW</h3></a>
+                    <p>BMW was ahead of its time and produced its first electric car in 1972, the BMW 1602e. In 1994, BMW acquired the Rover Group, which owned the rights to MINI, among other car brands.</p>
+                </div>
+            </div>
+            <!-- SECOND : MERCEDES -->
+            <div class="card">
+                <div class="icon">
+                    <img src="/imgs/service-1.jpg" width="300" height="150" style="border-radius: 15px;">
+                </div>
+                <div class="info">
+                    <a href="mercedes.html" style="text-decoration: none;"><h3>MERCEDES</h3></a>
+                    <p>Mercedes-Benz is one of the oldest existing motor vehicle manufacturers. During their years they have produced millions of luxury vehicles,</p>
+                </div>
+            </div>
+            <!-- THIRD : AUDI  -->
+            <div class="card">
+                <div class="icon">
+                    <img src="/imgs/service-2.jpg" width="300" height="150" style="border-radius: 15px;">
+                </div>
+                <div class="info">
+                    <a href="audi.html" style="text-decoration: none;"><h3>AUDI</h3></a>
+                    <p>Audi's founder, German engineer August Horch, left his first car company after a falling out with his CFO, starting a rival company which he called August Horch Automobilwerke GmbH.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+ 
+    <footer>
+        <div class="footerContainer">
+            <div class="socialIcons">
+                <a href=""><i class="fa-brands fa-facebook"></i></a>
+                <a href=""><i class="fa-brands fa-instagram"></i></a>
+                <a href=""><i class="fa-brands fa-twitter"></i></a>
+                <a href=""><i class="fa-brands fa-google-plus"></i></a>
+                <a href=""><i class="fa-brands fa-youtube"></i></a>
+            </div>
+            <div class="footerNav">
+                <ul>
+                    <li><a href="">Home</a></li>
+                    <li><a href="">News</a></li>
+                    <li><a href="">About</a></li>
+                    <li><a href="">Contact Us</a></li>
+                </ul>
+            </div>
+
+        </div>
+        <div class="footerBottom">
+            <p>Copyright &copy;2023; Designed by <span class="designer">Yousef Elbaz</span></p>
+        </div>
+    </footer>
+  </body> *@
+
+
+<body>
+    <div class="hero_area">
+      
+        <!-- slider section -->
+        <section class=" slider_section ">
+            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-7">
+                                    <div class="detail-box">
+                                        <h1>
+                                            Your Car <br>
+                                            <span>
+                                                Our Responsibility
+                                            </span>
+                                        </h1>
+                                        <p>
+                                            Welcome! We provide expert car maintenance and repair services,
+                                            including inspections, oil changes, and brake and AC repairs.
+                                        </p>
+                                        <div class="btn-box">
+                                            <a href="" class="btn-1"> Read more </a>
+                                            <a href="" class="btn-2">Get A Quote</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item ">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-7">
+                                    <div class="detail-box">
+                                        <h1>
+                                            Your Service <br>
+                                            <span>
+                                                Our Responsibility
+                                            </span>
+                                        </h1>
+                                        <p>
+                                            Welcome! We provide expert car maintenance and repair services,
+                                            including inspections, oil changes, and brake and AC repairs.
+                                        </p>
+                                        <div class="btn-box">
+                                            <a href="" class="btn-1"> Read more </a>
+                                            <a href="" class="btn-2">Get A Quote</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item ">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-7">
+                                    <div class="detail-box">
+                                        <h1>
+                                            Your Car <br>
+                                            <span>
+                                                Our Responsibility
+                                            </span>
+                                        </h1>
+                                        <p>
+                                            Welcome! We provide expert car maintenance and repair services,
+                                            including inspections, oil changes, and brake and AC repairs.
+                                        </p>
+                                        <div class="btn-box">
+                                            <a href="" class="btn-1"> Read more </a>
+                                            <a href="" class="btn-2">Get A Quote</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="container idicator_container">
+                    <ol class="carousel-indicators">
+                        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                    </ol>
+                </div>
+            </div>
+        </section>
+        <!-- end slider section -->
+    </div>
+
+    <!-- about section -->
+
+    <section class="about_section layout_padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 px-0">
+                    <div class="img_container">
+                        <div class="img-box">
+                            <img src="imgs/srvc.png" alt="" />
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 px-0">
+                    <div class="detail-box">
+                        <div class="heading_container ">
+                            <h2>
+                                Who Are We?
+                            </h2>
+                        </div>
+                        <p>
+                            We're a leading car e-service provider dedicated to making car maintenance hassle-free and affordable. Our mission is to offer convenient, on-demand services that save customers time and money. With a team of experienced technicians and a commitment to quality, we're revolutionizing the way people care for their vehicles.
+                        </p>
+                        <div class="btn-box">
+                            <a href="">
+                                Read More
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- end about section -->
+    <!-- service section -->
+
+    <section class="service_section layout_padding">
+        <div class="container">
+            <div class="heading_container heading_center">
+                <h2>
+                    Our services
+                </h2>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="box ">
+                        <div class="img-box">
+                            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
+                            <image href="imgs/car-oil.png" x="0" y="0" width="512" height="512" />            
+                            </svg>
+                        </div>
+                        <div class="detail-box">
+                            <h6>
+                                Oil Change
+                            </h6>
+                            <p>
+                                Essential maintenance that includes inspecting and replacing oil pads, rotors, and fluid to ensure safe and effective engine performance.
+                            <a href="">
+                                Read More
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="box ">
+                        <div class="img-box">
+                            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
+                            <image href="imgs/brake.png" x="0" y="0" width="512" height="512" />            
+                            </svg>
+                        </div>
+                        <div class="detail-box">
+                            <h6>
+                                Brake Service
+                            </h6>
+                            <p>
+                                Essential maintenance that includes inspecting and replacing brake pads, rotors, and fluid to ensure safe and effective braking performance.
+                            </p>
+                            <a href="">
+                                Read More
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="box ">
+                        <div class="img-box">
+                            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
+                            <image href="imgs/engine.png" x="0" y="0" width="512" height="512" />            
+                            </svg>
+                        </div>
+                        <div class="detail-box">
+                            <h6>
+                                Engine Diagnostics
+                            </h6>
+                            <p>
+                                Crucial procedure that involves using specialized tools to identify and troubleshoot engine issues, ensuring optimal performance and efficiency.
+                            </p>
+                            <a href="">
+                                Read More
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- end service section -->
+    <!-- client section -->
+
+    <section class="client_section layout_padding">
+        <div class="container ">
+            <div class="heading_container heading_center">
+                <h2>
+                    What is says our clients
+                </h2>
+            </div>
+            <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <div class="box">
+                            <div class="img-box">
+                                <img src="imgs/Yousef.jpg" alt="">
+                            </div>
+                            <div class="detail-box">
+                                <h4>
+                                    الحاج يوسف الباز الدولي
+                                </h4>
+                                <p>
+                                    I wanted to take a moment to express my sincere gratitude for the excellent service you provided. 
+                                    Your professionalism and expertise made a significant difference,
+                                    and the competitive pricing was greatly appreciated.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item ">
+                        <div class="box">
+                            <div class="img-box">
+                                <img src="imgs/Yousef.jpg" alt="">
+                            </div>
+                            <div class="detail-box">
+                                <h4>
+                                    Yousef Elbaz
+                                </h4>
+                                <p>
+                                    I wanted to take a moment to express my sincere gratitude for the excellent service you provided.
+                                    Your professionalism and expertise made a significant difference,
+                                    and the competitive pricing was greatly appreciated.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item ">
+                        <div class="box">
+                            <div class="img-box">
+                                <img src="imgs/Yousef.jpg" alt="">
+                            </div>
+                            <div class="detail-box">
+                                <h4>
+                                    Yousef Elbaz
+                                </h4>
+                                <p>
+                                    I wanted to take a moment to express my sincere gratitude for the excellent service you provided.
+                                    Your professionalism and expertise made a significant difference,
+                                    and the competitive pricing was greatly appreciated.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel_btn-box">
+                    <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                        <i class="fa fa-angle-left" aria-hidden="true"></i>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                        <i class="fa fa-angle-right" aria-hidden="true"></i>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- end client section -->
+    <!-- contact section -->
+
+    <section class="contact_section layout_padding">
+        <div class="contact_bg_box">
+            <div class="img-box">
+                <img src="images/contact-bg.jpg" alt="">
+            </div>
+        </div>
+        <div class="container">
+            <div class="heading_container heading_center">
+                <h2>
+                    Get In touch
+                </h2>
+            </div>
+            <div class="">
+                <div class="row">
+                    <div class="col-md-7 mx-auto">
+                        <form action="#">
+                            <div class="contact_form-container">
+                                <div>
+                                    <div>
+                                        <input type="text" placeholder="Full Name" />
+                                    </div>
+                                    <div>
+                                        <input type="email" placeholder="Email " />
+                                    </div>
+                                    <div>
+                                        <input type="text" placeholder="Phone Number" />
+                                    </div>
+                                    <div class="">
+                                        <input type="text" placeholder="Message" class="message_input" />
+                                    </div>
+                                    <div class="btn-box ">
+                                        <button type="submit">
+                                            Send
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- end contact section -->
+    <!-- team section -->
+
+    <section class="team_section layout_padding">
+        <div class="container">
+            <div class="heading_container heading_center">
+                <h2>
+                    Our Technicians
+                </h2>
+                <p>
+                    Our technicians are highly trained and dedicated professionals,
+                    ensuring top-quality service and expertise in every task.
+                </p>
+            </div>
+            <div class="row">
+                <div class="col-md-4 col-sm-6 mx-auto ">
+                    <div class="box">
+                        <div class="img-box">
+                            <img src="imgs/mech2.png" alt="">
+                        </div>
+                        <div class="detail-box">
+                            <h5>
+                                Martin Anderson
+                            </h5>
+                            <h6 class="">
+                                supervisor
+                            </h6>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6 mx-auto ">
+                    <div class="box">
+                        <div class="img-box">
+                            <img src="imgs/mech1.png" alt="">
+                        </div>
+                        <div class="detail-box">
+                            <h5>
+                                Denny Butler
+                            </h5>
+                            <h6 class="">
+                                supervisor
+                            </h6>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6 mx-auto ">
+                    <div class="box">
+                        <div class="img-box">
+                            <img src="imgs/mech3.png" alt="">
+                        </div>
+                        <div class="detail-box">
+                            <h5>
+                                Nathan Mcpherson
+                            </h5>
+                            <h6 class="">
+                                supervisor
+                            </h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="btn-box">
+                <a href="">
+                    View All
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- end team section -->
+    <!-- info section -->
+    <section class="info_section ">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="info_logo">
+                        <a class="navbar-brand" href="index.html">
+                            <span>
+                                Guarder
+                            </span>
+                        </a>
+                        <p>
+                            dolor sit amet, consectetur magna aliqua. Ut enim ad minim veniam, quisdotempor incididunt r
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="info_links">
+                        <h5>
+                            Useful Link
+                        </h5>
+                        <ul>
+                            <li>
+                                <a href="">
+                                    dolor sit amet, consectetur
+                                </a>
+                            </li>
+                            <li>
+                                <a href="">
+                                    magna aliqua. Ut enim ad
+                                </a>
+                            </li>
+                            <li>
+                                <a href="">
+                                    minim veniam,
+                                </a>
+                            </li>
+                            <li>
+                                <a href="">
+                                    quisdotempor incididunt r
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="info_info">
+                        <h5>
+                            Contact Us
+                        </h5>
+                    </div>
+                    <div class="info_contact">
+                        <a href="" class="">
+                            <i class="fa fa-map-marker" aria-hidden="true"></i>
+                            <span>
+                                Lorem ipsum dolor sit amet,
+                            </span>
+                        </a>
+                        <a href="" class="">
+                            <i class="fa fa-phone" aria-hidden="true"></i>
+                            <span>
+                                Call : +01 1234567890
+                            </span>
+                        </a>
+                        <a href="" class="">
+                            <i class="fa fa-envelope" aria-hidden="true"></i>
+                            <span>
+                                demo@gmail.com
+                            </span>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="info_form ">
+                        <h5>
+                            Newsletter
+                        </h5>
+                        <form action="#">
+                            <input type="email" placeholder="Enter your email">
+                            <button>
+                                Subscribe
+                            </button>
+                        </form>
+                        <div class="social_box">
+                            <a href="">
+                                <i class="fa fa-facebook" aria-hidden="true"></i>
+                            </a>
+                            <a href="">
+                                <i class="fa fa-twitter" aria-hidden="true"></i>
+                            </a>
+                            <a href="">
+                                <i class="fa fa-youtube" aria-hidden="true"></i>
+                            </a>
+                            <a href="">
+                                <i class="fa fa-instagram" aria-hidden="true"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- end info_section -->
+    <!-- footer section -->
+    <footer class="container-fluid footer_section">
+        <p>
+            &copy; <span id="currentYear"></span> All Rights Reserved. Design by
+            <a href="https://html.design/">Free Html Templates</a>
+        </p>
+    </footer>
+    <!-- footer section -->
+
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <script src="js/custom.js"></script>
+</body>
+</html>
+

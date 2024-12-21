@@ -1,0 +1,20 @@
+﻿@model ServiceViewModel
+@{
+    ViewData["Title"] = "Edit";
+}
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<h1>Edit Service</h1>
+<form asp-controller="Services" asp-action="Edit" method="post">
+
+    <partial name="Partialviews/CreateEditServicesPartial" />
+
+    <input type="submit" class="btn btn-dark" value="Edit" />
+    <a asp-controller="Services" asp-action="Index" class="btn btn-dark">Back To List</a>
+
+</form>
+

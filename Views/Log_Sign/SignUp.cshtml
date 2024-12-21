@@ -1,0 +1,73 @@
+﻿@using DALProject.Models
+@model CustomerViewModel
+@{
+    ViewData["Title"] = "Sign Up";
+}
+
+<h1>SignUp</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up Form</title>
+    <!-- رابط Bootstrap CDN -->
+    
+</head>
+<body>
+
+    <div class="container mt-5">
+        <h2 class="text-center mb-4">Sign Up</h2>
+        <form asp-controller="Log_Sign" asp-action="SignUp" method="post">
+            <div class="form-group">
+                <label asp-for="Name"> </label>
+                <input class="form-control" asp-for="Name" required>
+                <span asp-asp-validation-for="Name" class="text-danger"> </span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="City"> </label>
+                <input  class="form-control" asp-for="City" required>
+                <span asp-asp-validation-for="City" class="text-danger"> </span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Street"> </label>
+                <input class="form-control" asp-for="Street" required>
+                <span asp-asp-validation-for="Street" class="text-danger"> </span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="ContactNumber"> </label>
+                <input class="form-control" asp-for="ContactNumber" required>
+                <span asp-asp-validation-for="Contact" class="text-danger"> </span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Email"> </label>
+                <input class="form-control" asp-for="Email" required>
+                <span asp-asp-validation-for="City" class="text-danger"> </span>
+            </div>
+
+           
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <input type="submit" style="margin-left: 5px;" class="main-btn" value="Sign Up" />
+        </form>
+    </div>
+
+    <!-- رابط Bootstrap JavaScript و jQuery CDN -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+   
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
+
+

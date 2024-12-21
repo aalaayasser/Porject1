@@ -1,0 +1,28 @@
+﻿@model ServiceViewModel
+@{
+    ViewData["Title"] = "DeleteDetailsServicewsPartial";
+}
+<div class="mb-3">
+    <label asp-for="Name" class="form-label"></label>
+    <input class="form-control" asp-for="Name" readonly />
+</div>
+<div class="mb-3">
+    <label asp-for="Category" class="form-label"></label>
+    <input class="form-control" asp-for="CategoryId" readonly />
+</div>
+
+<div class="mb-3">
+    <label asp-for="Price" class="form-label"></label>
+    <input class="form-control" asp-for="Price" readonly />
+</div>
+
+@* <div class="mb-3">
+    <label asp-for="EstimatedTime" class="form-label"></label>
+    <input class="form-control" asp-for="EstimatedTime" readonly />
+</div> *@
+
+<div class="mb-3">
+    <label asp-for="Description" class="form-label"></label>
+    <input class="form-control" asp-for="Description" readonly />
+</div>
+

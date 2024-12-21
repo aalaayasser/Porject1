@@ -1,0 +1,32 @@
+﻿@model ProdServCategory
+@{
+    ViewBag.PageTitle = "Category Mangament";
+    ViewBag.CardTitle = " Update Category ";
+    
+}
+
+
+
+<form mothod="post" asp-action="Edit" asp-controller="NewCategory">
+    <input hidden asp-for="Id" />
+    <div class="mb-3">
+        <label asp-for="Name"></label>
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+
+        <label asp-for="Description"></label>
+        <input asp-for="Description" class="form-control" />
+        <span asp-validation-for="Description" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <button type="submit" class="btn btn-primary">Edit</button>
+        <a asp-action="Index" asp-controller="NewCategory" class="btn btn-warning">Back to Index  </a>
+    </div>
+</form>
+
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+
+}
+

@@ -1,0 +1,46 @@
+﻿@model PartViewModel
+@{
+    
+    var PartList = new SelectList(ViewData["Parts"] as IEnumerable<Part>, "Id", "Name");
+    
+}
+@if (ViewData["Parts"] != null && (ViewData["Parts"] as List<Part>).Any())
+{
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <h2 class="text-center mb-4">Add Part</h2>
+                <form asp-action="AddPart" method="post" class="form-horizontal bg-light p-4 rounded shadow">
+                    <!-- Group for Part Selection -->
+                    <div class="form-group">
+                        <label asp-for="Id" class="font-weight-bold">Select Part</label>
+                        <select asp-for="Id" class="form-control" asp-items="@(new SelectList(ViewData["Parts"] as List<Part>, "Id", "PartName"))" required>
+                            <option value="">-- Select Part --</option>
+                        </select>
+                        <small class="form-text text-muted">Please choose a part from the list.</small>
+                        <span asp-validation-for="Id" class="text-danger"></span>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <div class="form-group text-center">
+                        <button type="submit" class="btn btn-dark btn-block">Add Part</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+}
+else
+{
+    <p class="text-warning">No parts available. Please add parts first.</p>
+}
+
+
+
+
+
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

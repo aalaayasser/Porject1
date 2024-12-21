@@ -1,0 +1,200 @@
+﻿@model CarViewModel
+@inject IUnitOfWork unitOfWork
+@{
+    var Colors = new SelectList(unitOfWork.Repository<Color>().GetAll(), "Id", "Name");
+    var Brands = new SelectList(unitOfWork.Repository<Brand>().GetAll(), "Id", "Name");
+}
+
+@{
+    ViewData["Title"] = "Car";
+}
+
+<div class="container mt-3">
+    <!-- العنوان -->
+    <div class="d-flex justify-content-center align-items-center flex-column mt-3">
+        <h2>@ViewData["Title"]</h2>
+    </div>
+
+    <form asp-controller="Car" asp-action="CreateCar" method="post">
+        <div asp-validation-summary="All" class="text-danger mb-2"></div>
+
+        <!-- Brand Dropdown -->
+        <div class="form-group">
+            <label for="DrpBrand" class="control-label custom-label">Brand</label>
+            <div class="input-box">
+                <select class="form-control custom-border" id="DrpBrand" asp-for="Model.BrandId" asp-items="Brands" onchange="BrandChange();">
+                    <option value="">--Select Brand--</option>
+                </select>
+            </div>
+            <span asp-validation-for="Model.BrandId" class="text-danger"></span>
+        </div>
+
+        <!-- Model Dropdown -->
+        <div class="form-group">
+            <label for="DrpModel" class="control-label custom-label">Model</label>
+            <div class="input-box">
+                <select class="form-control custom-border" asp-for="ModelId" id="DrpModel">
+                    <option value="">--Select Model--</option>
+                </select>
+            </div>
+            <span asp-validation-for="ModelId" class="text-danger"></span>
+        </div>
+
+        <!-- Plate Number Input -->
+        <div class="form-group">
+            <label for="PlateNumber" class="control-label custom-label">Plate Number</label>
+            <div class="input-box">
+                <input class="form-control custom-border" asp-for="PlateNumber" id="PlateNumber" />
+            </div>
+            <span asp-validation-for="PlateNumber" class="text-danger"></span>
+        </div>
+
+        <!-- Color Dropdown -->
+        <div class="form-group">
+            <label for="ColorId" class="control-label custom-label">Color</label>
+            <div class="input-box">
+                <select class="form-control custom-border" asp-for="ColorId" asp-items="Colors">
+                    <option value="">--Select Color--</option>
+                </select>
+            </div>
+            <span asp-validation-for="ColorId" class="text-danger"></span>
+        </div>
+
+        <!-- Description Input -->
+        <div class="form-group">
+            <label for="Description" class="control-label custom-label">Description</label>
+            <div class="input-box">
+                <input class="form-control custom-border" asp-for="Description" id="Description" />
+            </div>
+            <span asp-validation-for="Description" class="text-danger"></span>
+        </div>
+
+        <!-- Year Input -->
+        <div class="form-group">
+            <label for="Year" class="control-label custom-label">Year</label>
+            <div class="input-box">
+                <input class="form-control custom-border" asp-for="Year" id="Year" />
+            </div>
+            <span asp-validation-for="Year" class="text-danger"></span>
+        </div>
+
+        <!-- Submit and Cancel Buttons -->
+        <div class="form-group text-center mt-3">
+            <button type="submit" class="btn btn-dark btn-lg" style="width: 200px;">Create Car</button>
+            <a asp-controller="Car" asp-action="Index" class="btn btn-dark btn-lg" style="width: 200px;">Cancel</a>
+        </div>
+    </form>
+</div>
+
+@section Script
+{
+    <script>
+        // Update model list based on selected brand
+        $("#DrpBrand").change(function () {
+            var BrandId = $(this).val();
+            if (BrandId) {
+                $.ajax({
+                    url: '@Url.Action("GetModelByBrands", "Car")',
+                    type: "GET",
+                    data: { BrandId: BrandId },
+                    success: function (data) {
+                        let DrpModel = $("#DrpModel");
+                        DrpModel.empty().append("<option value=''>Select Model</option>");
+                        for (let i = 0; i < data.length; i++) {
+                            DrpModel.append(`<option value="${data[i].id}">${data[i].name}</option>`);
+                        }
+                    },
+                    error: function () {
+                        alert('Error loading models. Please try again.');
+                    }
+                });
+            } else {
+                $("#DrpModel").empty().append("<option value=''>Select Model</option>");
+            }
+        });
+    </script>
+}
+
+<style>
+    /* تحسين التصميم باستخدام CSS مدمج */
+    body {
+        background-color: #f8f9fa;
+        font-family: 'Arial', sans-serif;
+    }
+
+    h2 {
+        font-size: 2rem;
+        font-weight: bold;
+        color: #333;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    .form-group {
+        margin-bottom: 10px; /* تقليل المسافة الداخلية بين العناصر أكثر */
+    }
+
+    .input-box {
+        border: 1px solid #ccc;
+        border-radius: 6px; /* تقليل حواف الصندوق */
+        padding: 4px; /* تقليل المسافة داخل الحقول */
+        margin-bottom: 5px; /* تقليل المسافة أسفل الحقول */
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .form-control {
+        border-radius: 5px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+        .form-control:focus {
+            border-color: #343a40;
+            box-shadow: 0 0 0 0.2rem rgba(38, 143, 255, 0.5);
+        }
+
+    .custom-border {
+        border: 2px solid #343a40;
+    }
+
+    .btn {
+        transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    }
+
+        .btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+    .container {
+        padding: 10px; /* تقليل المسافات داخل الحاوية */
+        background-color: white;
+        border-radius: 10px;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .text-danger {
+        font-size: 0.8rem;
+    }
+
+    .custom-label {
+        display: inline-block;
+        padding: 6px 12px; /* تقليل الحواف حول النص */
+        font-size: 0.95rem;
+        font-weight: bold;
+        color: #fff;
+        background-color: #343a40;
+        border-radius: 5px;
+        margin-bottom: 8px;
+    }
+
+    .btn-dark {
+        background-color: #343a40;
+        border-color: #343a40;
+    }
+
+        .btn-dark:hover {
+            background-color: #23272b;
+            border-color: #1d2124;
+        }
+</style>

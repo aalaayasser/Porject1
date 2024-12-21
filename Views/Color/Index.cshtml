@@ -1,0 +1,126 @@
+﻿@model IEnumerable<ColorViewModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<br />
+@if (TempData["Message"] is not null)
+{
+    <div id="successMessage" class="alert alert-success text-center mt-4 shadow-sm rounded">
+        <h3>@TempData["Message"]</h3>
+    </div>
+
+    <script>
+        setTimeout(function () {
+            var successMessage = document.getElementById("successMessage");
+            if (successMessage) {
+                successMessage.style.display = 'none';
+            }
+        }, 3000);
+    </script>
+}
+
+<!-- مربع يحتوي على كل العناصر -->
+<div class="container d-flex justify-content-center align-items-center" style="min-height: 80vh;">
+    <div class="shadow-lg rounded p-4" style="background-color: #fff; max-width: 700px; width: 100%;">
+
+        <!-- عنوان Colors -->
+        <div class="text-center mb-4">
+            <h2 style="font-weight: bold; font-size: 2rem; color: #333;">Colors</h2>
+        </div>
+
+        <!-- رسالة الخطأ أو الجدول -->
+        @if (Model.Count() > 0)
+        {
+            <div class="table-responsive mt-4">
+                <table class="table table-bordered table-hover text-center shadow-sm rounded">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>@Html.DisplayNameFor(D => D.Name)</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var Ser in Model)
+                        {
+                            <tr>
+                                <td>@Ser.Name</td>
+                                <td>
+                                    <a asp-action="Delete" asp-route-Id="@Ser.Id" class="btn btn-dark btn-sm shadow-sm">
+                                        <i class="fas fa-trash"></i> Delete
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        }
+        else
+        {
+            <div class="mt-4 text-center">
+                <h3 class="text-muted">There are No Colors!</h3>
+            </div>
+        }
+
+        <!-- زر إضافة لون جديد -->
+        <div class="d-flex justify-content-center align-items-center mt-4">
+            <a asp-controller="Color" asp-action="AddColor" class="btn btn-dark shadow-sm px-4 py-2">
+                <i class="fas fa-plus-circle"></i> Add New Color
+            </a>
+        </div>
+    </div>
+</div>
+
+<!-- تحسين التصميم باستخدام CSS مدمج -->
+<style>
+    body {
+        background-color: #f8f9fa;
+    }
+
+    .shadow-lg {
+        border: 1px solid #ddd;
+    }
+
+    table {
+        margin-top: 20px;
+    }
+
+    h2 {
+        margin-bottom: 20px;
+        text-transform: uppercase;
+    }
+
+    .btn {
+        transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    }
+
+        .btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+    th {
+        font-size: 1.1rem;
+    }
+
+    td {
+        font-size: 1rem;
+        color: #555;
+    }
+
+    .table {
+        border-radius: 8px;
+        overflow: hidden;
+    }
+
+    .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .shadow-lg {
+        padding: 30px;
+    }
+</style>

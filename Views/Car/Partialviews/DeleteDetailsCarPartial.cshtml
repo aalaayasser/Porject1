@@ -1,0 +1,32 @@
+﻿@model CarViewModel
+@{
+    ViewData["Title"] = "DeleteDetailsCarPartial";
+}
+
+<div class="form-group">
+	<label asp-for="Model.Brand" class="form-label">Brand</label>
+	<input class="form-control" asp-for="Model.Brand.Name" readonly/>
+</div>
+<div class="form-group">
+	<label asp-for="Model" class="form-label"> </label>
+	<input class="form-control" asp-for="Model.Name" readonly/>
+</div>
+<div class="form-group">
+	<label asp-for="Color" class="form-label"> </label>
+	<input class="form-control" asp-for="Color.Name" readonly/>
+</div>
+<div class="form-group">
+	<label asp-for="PlateNumber"> </label>
+	<input class="form-control" asp-for="PlateNumber" readonly>
+</div>
+<div class="form-group">
+	<label asp-for="Description"> </label>
+	<input class="form-control" asp-for="Description" readonly>
+</div>
+
+<div class="form-group">
+	<label asp-for="Year"> </label>
+	<input class="form-control" asp-for="Year" readonly>
+</div>
+
+
